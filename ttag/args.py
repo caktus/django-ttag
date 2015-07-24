@@ -1,10 +1,14 @@
 import copy
 import datetime
 import re
-from django.template import TemplateSyntaxError, FilterExpression, Variable, \
-    VariableDoesNotExist
+from django.template import TemplateSyntaxError, Variable, VariableDoesNotExist
 from django.utils.encoding import force_unicode
 from ttag.exceptions import TagValidationError
+
+try:
+    from django.template import FilterExpression
+except ImportError:
+    from django.template.base import FilterExpression
 
 
 class Arg(object):
@@ -49,7 +53,7 @@ class Arg(object):
 
         :param named:
             Make this a named argument, using an space to separate the argument
-            name from its value, for example, ``{% tag limit 10 %}``. 
+            name from its value, for example, ``{% tag limit 10 %}``.
 
             Defaults to ``False``.
 
@@ -118,7 +122,7 @@ class Arg(object):
     def is_token_named_arg(self, token, valid_named_args):
         """
         Check to see if the token is a valid named argument.
-        
+
         :param valid_named_args: List of valid arguments.
 
             Keyword named arguments must be in the format ``'name='`` so they
