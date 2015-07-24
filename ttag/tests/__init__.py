@@ -1,4 +1,4 @@
-from ttag.tests.main import TagExecutionTests, TestArgumentTypes, \
+from ttag.tests.test_main import TagExecutionTests, TestArgumentTypes, \
     PositionalTest, KeywordsArgTest
-from ttag.tests.registration import RegisterTest
-from ttag.tests.helpers import AsTag, TemplateTag
+from ttag.tests.test_registration import RegisterTest
+from ttag.tests.test_helpers import AsTag, TemplateTag

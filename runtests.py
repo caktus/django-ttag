@@ -2,25 +2,10 @@
 import os
 import sys
 
-from django.conf import settings
+if __name__ == "__main__":
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings_tests")
+    os.environ.setdefault("PYTHONPATH", os.path.dirname(__file__)) 
 
-if not settings.configured:
-    settings.configure(
-        DATABASE_ENGINE='sqlite3',
-        INSTALLED_APPS=[
-            'ttag',
-        ],
-    )
-
-from django.test.simple import run_tests
-
-
-def runtests(*test_args):
-    if not test_args:
-        test_args = ['ttag']
-    failures = run_tests(test_args, verbosity=1, interactive=True)
-    sys.exit(failures)
-
-
-if __name__ == '__main__':
-    runtests(*sys.argv[1:])
+    from django.core.management import execute_from_command_line
+    args = sys.argv[1:] and sys.argv[1:] or ['ttag']
+    execute_from_command_line(['django-admin.py', 'test'] + args)
