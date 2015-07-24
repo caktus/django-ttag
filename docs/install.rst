@@ -3,7 +3,8 @@ Installation
 ============
 
 Before installing django-ttag, you'll obviously need to have copy of Django
-installed. For the |version| release, Django 1.1 is required.
+installed. For the |version| release, Django 1.4-1.8 and Python 2.6 or 2.7
+are required.
 
 
 Installing django-ttag

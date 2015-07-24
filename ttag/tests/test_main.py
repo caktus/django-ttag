@@ -2,11 +2,12 @@ import datetime
 
 from django.test import TestCase
 from django import template
+from django.template.base import add_to_builtins
 
 import ttag
 from ttag.tests.setup import tags, models
 
-template.add_to_builtins(tags.__name__)
+add_to_builtins(tags.__name__)
 
 
 def render(contents, extra_context=None):
