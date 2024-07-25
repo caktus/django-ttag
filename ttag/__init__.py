@@ -10,7 +10,7 @@ except ImportError:
     # being installed at the same time as Django.
     pass
 
-VERSION = (3, 0)
+VERSION = (3, 1, 0, 'dev')
 
 
 def get_version(number_only=False):
