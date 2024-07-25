@@ -15,6 +15,7 @@ if not settings.configured:
             'ttag',
             'ttag.tests.ttag_test_app'
         ],
+        DEFAULT_AUTO_FIELD='django.db.models.AutoField',
     )
 
 try:

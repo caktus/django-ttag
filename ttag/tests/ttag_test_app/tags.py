@@ -1,6 +1,6 @@
 import six
 try:
-    from django.utils.encoding import force_text
+    from django.utils.encoding import force_str
 except ImportError:  # Django <1.8
     from django.utils.encoding import force_unicode as force_text
 
@@ -132,7 +132,7 @@ class DotCombine(TestTag):
     args = ttag.MultiArg()
 
     def output(self, data):
-        args = [force_text(arg) for arg in data['args']]
+        args = [force_str(arg) for arg in data['args']]
         return '.'.join(args)
 
 
@@ -140,7 +140,7 @@ class DotCombineDefault(DotCombine):
     default = ttag.Arg(named=True)
 
     def output(self, data):
-        args = [arg and force_text(arg) or data['default']
+        args = [arg and force_str(arg) or data['default']
                 for arg in data['args']]
         return '.'.join(args)
 

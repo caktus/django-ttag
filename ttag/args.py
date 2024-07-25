@@ -9,7 +9,7 @@ except ImportError:  # Django <1.8
     from django.template import (
         TemplateSyntaxError, FilterExpression, Variable, VariableDoesNotExist)
 try:
-    from django.utils.encoding import force_text
+    from django.utils.encoding import force_str
 except ImportError:  # Django <1.8
     from django.utils.encoding import force_unicode as force_text
 from ttag.exceptions import TagValidationError
@@ -171,6 +171,7 @@ class Arg(object):
             # that any filters defined in the expression are executed.
             expression = copy.copy(original_value)
             expression.var = value
+            expression.is_var = isinstance(value, Variable)
             value = expression.resolve(context)
         return value
 
@@ -275,7 +276,7 @@ class StringArg(Arg):
         """
         Force to unicode.
         """
-        return force_text(value)
+        return force_str(value)
 
 
 class ConstantArg(BasicArg):
