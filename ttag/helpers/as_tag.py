@@ -43,7 +43,7 @@ class AsTag(core.BaseTag):
         if as_var:
             context[as_var] = value
             return self.as_output(data, context)
-        return value
+        return str(value)
 
     def as_value(self, data, context):
         return self.output(data)
